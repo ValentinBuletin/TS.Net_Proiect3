@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Pics_Vids" EntityType="Model1.Pic_Vid" />
+    <EntitySet Name="Tags" EntityType="Model1.Tag" />
+  </EntityContainer>
+  <EntityType Name="Pic_Vid">
+    <Key>
+      <PropertyRef Name="Unique_Id" />
+    </Key>
+    <Property Name="Unique_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Full_Path" Type="String" Nullable="false" />
+    <Property Name="Type" Type="String" Nullable="false" />
+    <Property Name="Size" Type="Double" Nullable="false" />
+    <Property Name="Date_Created" Type="DateTime" Nullable="false" />
+    <Property Name="Date_Modified" Type="DateTime" Nullable="false" />
+    <Property Name="Values" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="Tag_Id" />
+    </Key>
+    <Property Name="Tag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tag_Name" Type="String" Nullable="false" />
+  </EntityType>
+</Schema>

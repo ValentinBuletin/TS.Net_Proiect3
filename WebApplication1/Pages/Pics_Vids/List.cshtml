@@ -1,0 +1,13 @@
+﻿@page
+@model WebApplication1.Pages.Pics_Vids.ListModel
+@{
+    ViewData["Title"] = "Properties";
+}
+
+<h1>Properties</h1>
+<br>
+@for (int i=0;i<Model.Props.Count;i++)
+{
+    int tmp = i + 1;
+    <p>@Html.DisplayFor(modelItem => tmp).  @Html.DisplayFor(modelItem => Model.Props[i]) </p>
+}

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="Pics_Vids">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Pic_Vid)">
+        <MappingFragment StoreEntitySet="Pics_Vids">
+          <ScalarProperty Name="Unique_Id" ColumnName="Unique_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Full_Path" ColumnName="Full_Path" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Date_Created" ColumnName="Date_Created" />
+          <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+          <ScalarProperty Name="Values" ColumnName="Values" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Tag)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+          <ScalarProperty Name="Tag_Name" ColumnName="Tag_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

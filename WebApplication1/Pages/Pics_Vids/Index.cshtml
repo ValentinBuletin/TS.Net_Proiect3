@@ -1,0 +1,180 @@
+﻿@page "{SearchString?}"
+@model WebApplication1.Pages.Pics_Vids.IndexModel
+@{
+    ViewData["Title"] = "Database";
+}
+
+<h1>Database</h1>
+
+<form>
+    <p>
+        Search: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.SearchString))
+{
+    <p><b> Number of pictures and videos found: <italic>@Html.DisplayFor(model => Model.Pics_Vids.Count) </italic></p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Picture
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Unique_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Full_Path)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Size) <h6 style="font-size:small">(MB)</h6>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Date_Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pics_Vids[0].Date_Modified)
+            </th>
+            @foreach (var item in Model.Tags)
+            {
+                <th>
+                    @Html.DisplayFor(modelItem => item.Tag_Name)
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pics_Vids)
+        {
+            <tr style="font-size:small">
+
+                @if (item.Type == ".mp4")
+                {
+                    <td>
+                        <video width="200" height="150" controls>
+                            <source src="~/images/@Html.DisplayFor(modelItem => item.Name)@Html.DisplayFor(modelItem => item.Type)">
+                            Your browser does not support the video tag.
+                        </video>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <img src="~/images/@Html.DisplayFor(modelItem => item.Name)@Html.DisplayFor(modelItem => item.Type)" width="200" height="150">
+                    </td>
+                }
+
+
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Unique_Id.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Unique_Id)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Unique_Id)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Name.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Name)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Full_Path.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Full_Path)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Full_Path)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Type.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Type)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Size.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Size)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Date_Created.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Date_Created)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_Created)
+                    </td>
+                }
+                @if (!string.IsNullOrEmpty(Model.SearchString) && item.Date_Modified.ToString().Contains(Model.SearchString))
+                {
+                    <td style="color:red">
+                        <b>@Html.DisplayFor(modelItem => item.Date_Modified)</b>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date_Modified)
+                    </td>
+                }
+                @foreach (var cevaitem in item.Values)
+                {
+                    @if (!string.IsNullOrEmpty(Model.SearchString) && cevaitem.ToString().Contains(Model.SearchString))
+                    {
+                        <td style="color:red">
+                            <b>@Html.DisplayFor(modelItem => cevaitem)</b>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @Html.DisplayFor(modelItem => cevaitem)
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
